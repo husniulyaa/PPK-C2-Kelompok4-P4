@@ -6,7 +6,7 @@ import { getThemePreference } from "@/lib/session";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Student Expense Tracker - Financial Management for University Students",
+  title: "WE DESERVE MONEY - Student Expense Tracker",
   description:
     "A production-ready SaaS student expense tracker with real-time analytics, strict privacy authorization, and modern UI.",
 };
