@@ -21,7 +21,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={theme === "dark" ? "dark" : ""}>
-      <body className={`${inter.className} min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased`}>
+      <body className={`${inter.className} min-h-screen bg-[#F3E8DF] dark:bg-[#2b191a] text-[#452829] dark:text-[#F3E8DF] antialiased`}>
         {children}
       </body>
     </html>
