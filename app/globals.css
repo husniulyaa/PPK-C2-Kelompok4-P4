@@ -1,26 +1,76 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode Design Tokens */
+  --background: #F3E8DF;          /* Light Cream background */
+  --foreground: #452829;          /* Primary Dark Brown for clear typography */
+  --card: #ffffff;                /* Crisp white surface */
+  --card-foreground: #452829;     /* Dark brown text on cards */
+  --border: #E8D1C5;              /* Soft Beige borders */
+  --primary: #452829;             /* Primary Dark Brown */
+  --primary-foreground: #F3E8DF;  /* Light Cream text on primary buttons */
+  --secondary: #57595B;           /* Secondary Gray */
+  --secondary-foreground: #F3E8DF;/* Light text on secondary */
+  --muted: #E8D1C5;               /* Soft Beige muted elements */
+  --muted-foreground: #57595B;     /* Secondary Gray for supporting text */
+  --accent: #E8D1C5;              /* Soft Beige accent */
+  --accent-foreground: #452829;   /* Dark Brown text on accent */
+  --success: #3c5943;             /* Refined forest olive tone */
+  --danger: #9c3c3a;              /* Refined warm terracotta tone */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  /* Dark Mode Design Tokens */
+  --background: #2b191a;          /* Darker variation of Dark Brown */
+  --foreground: #F3E8DF;          /* Light Cream text */
+  --card: #3b2324;                /* Dark Brown surface cards */
+  --card-foreground: #F3E8DF;     /* Light Cream text on cards */
+  --border: #57595B;              /* Secondary Gray borders */
+  --primary: #E8D1C5;             /* Soft Beige for dark mode active buttons */
+  --primary-foreground: #452829;  /* Dark Brown text on beige buttons */
+  --secondary: #57595B;           /* Secondary Gray */
+  --secondary-foreground: #F3E8DF;/* Light Cream text */
+  --muted: #452829;               /* Dark Brown muted elements */
+  --muted-foreground: #E8D1C5;    /* Soft Beige supporting text */
+  --accent: #57595B;              /* Secondary Gray accents */
+  --accent-foreground: #F3E8DF;   /* Light Cream text */
+  --success: #608d6a;             /* Elegant sage green */
+  --danger: #c46461;              /* Elegant muted terracotta */
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.01em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Custom refined scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(87, 89, 91, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(69, 40, 41, 0.45);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(232, 209, 197, 0.2);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 209, 197, 0.4);
 }
