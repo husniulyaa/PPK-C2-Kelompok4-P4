@@ -107,7 +107,7 @@ git merge feature/sela-filter-preference
 
 ## 🧪 Acceptance Criteria Checklist
 
-### Lintang
+### Lintang (selesai)
 - [x] **US-01**: Registration form with validation (name, email, password min 6 chars) and Neon DB storage.
 - [x] **US-02**: Email/password authentication, password hashing with bcrypt, JWT session creation.
 - [x] **US-03**: Session maintained via HTTP-only cookie, Next.js middleware protected routes (`/dashboard`).
