@@ -18,6 +18,7 @@ const config: Config = {
           foreground: "var(--card-foreground)",
         },
         border: "var(--border)",
+        
         muted: {
           DEFAULT: "var(--muted)",
           foreground: "var(--muted-foreground)",

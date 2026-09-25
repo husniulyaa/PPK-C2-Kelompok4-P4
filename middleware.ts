@@ -6,6 +6,7 @@ const SESSION_COOKIE_NAME = "student_expense_session";
 const JWT_SECRET = process.env.JWT_SECRET || "student-expense-tracker-secret-key-super-secure-2026";
 const key = new TextEncoder().encode(JWT_SECRET);
 
+
 async function isValidSession(token?: string): Promise<boolean> {
   if (!token) return false;
   try {
