@@ -19,19 +19,19 @@ export function TransactionTable({
 }: TransactionTableProps) {
   if (transactions.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 p-12 text-center">
-        <div className="mx-auto w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-3">
+      <div className="rounded-2xl border border-dashed border-[#57595B]/40 dark:border-[#57595B]/60 bg-[#F3E8DF]/60 dark:bg-[#3b2324]/40 p-12 text-center transition-all">
+        <div className="mx-auto w-12 h-12 rounded-2xl bg-[#E8D1C5] dark:bg-[#452829] text-[#452829] dark:text-[#E8D1C5] flex items-center justify-center mb-3.5 shadow-sm">
           <AlertCircle className="w-6 h-6" />
         </div>
-        <h4 className="text-sm font-semibold text-slate-900 dark:text-white">
+        <h4 className="text-sm font-bold text-[#452829] dark:text-[#F3E8DF]">
           No transactions found
         </h4>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-sm mx-auto">
+        <p className="text-xs text-[#57595B] dark:text-[#E8D1C5]/70 mt-1 max-w-sm mx-auto">
           No records match your selected criteria. Add a new income or expense transaction to begin tracking your student finances.
         </p>
         <button
           onClick={onAddNew}
-          className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-sm transition-transform active:scale-95"
+          className="mt-5 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#452829] hover:bg-[#5c3638] text-[#F3E8DF] dark:bg-[#E8D1C5] dark:hover:bg-[#dfc1b3] dark:text-[#452829] text-xs font-bold shadow-sm transition-transform active:scale-95"
         >
           Add First Transaction
         </button>
@@ -40,35 +40,35 @@ export function TransactionTable({
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/90 shadow-sm overflow-hidden">
+    <div className="rounded-2xl border border-[#E8D1C5] dark:border-[#57595B]/60 bg-white dark:bg-[#3b2324] shadow-fintech overflow-hidden transition-all">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/75 dark:bg-slate-950/40 text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-              <th className="py-3 px-4 sm:px-6">Transaction Details</th>
-              <th className="py-3 px-4">Category</th>
-              <th className="py-3 px-4">Type</th>
-              <th className="py-3 px-4">Date</th>
-              <th className="py-3 px-4 text-right">Amount</th>
-              <th className="py-3 px-4 sm:px-6 text-right">Actions</th>
+            <tr className="border-b border-[#E8D1C5] dark:border-[#57595B]/60 bg-[#F3E8DF] dark:bg-[#2b191a] text-[11px] uppercase tracking-wider text-[#57595B] dark:text-[#E8D1C5]/80 font-bold">
+              <th className="py-3.5 px-4 sm:px-6">Transaction Details</th>
+              <th className="py-3.5 px-4">Category</th>
+              <th className="py-3.5 px-4">Type</th>
+              <th className="py-3.5 px-4">Date</th>
+              <th className="py-3.5 px-4 text-right">Amount</th>
+              <th className="py-3.5 px-4 sm:px-6 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80 text-xs">
+          <tbody className="divide-y divide-[#E8D1C5]/60 dark:divide-[#57595B]/40 text-xs">
             {transactions.map((tx) => {
               const isIncome = tx.type === "income";
               return (
                 <tr
                   key={tx.id}
-                  className="hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition-colors group"
+                  className="hover:bg-[#E8D1C5]/20 dark:hover:bg-[#452829]/40 transition-colors group"
                 >
                   {/* Title & icon */}
-                  <td className="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">
+                  <td className="py-4 px-4 sm:px-6 font-medium text-[#452829] dark:text-[#F3E8DF]">
                     <div className="flex items-center gap-3">
                       <div
-                        className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+                        className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 border ${
                           isIncome
-                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                            : "bg-rose-500/10 text-rose-600 dark:text-rose-400"
+                            ? "bg-[#E8D1C5]/50 border-[#E8D1C5] text-[#452829] dark:bg-[#452829] dark:border-[#57595B] dark:text-[#E8D1C5]"
+                            : "bg-[#57595B]/15 border-[#57595B]/30 text-[#57595B] dark:bg-[#57595B]/40 dark:border-[#57595B] dark:text-[#F3E8DF]"
                         }`}
                       >
                         {isIncome ? (
@@ -77,14 +77,16 @@ export function TransactionTable({
                           <ArrowDownLeft className="w-4 h-4" />
                         )}
                       </div>
-                      <span className="font-semibold">{tx.title}</span>
+                      <span className="font-bold text-[#452829] dark:text-[#F3E8DF]">
+                        {tx.title}
+                      </span>
                     </div>
                   </td>
 
-                  {/* Category */}
-                  <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300">
+                  {/* Category Badge */}
+                  <td className="py-4 px-4 text-[#57595B] dark:text-[#E8D1C5]">
                     <span
-                      className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium border ${getCategoryBadgeClass(
+                      className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${getCategoryBadgeClass(
                         tx.category
                       )}`}
                     >
@@ -94,12 +96,12 @@ export function TransactionTable({
                   </td>
 
                   {/* Type Badge */}
-                  <td className="py-3.5 px-4">
+                  <td className="py-4 px-4">
                     <span
-                      className={`inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold ${
+                      className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-[11px] font-bold border ${
                         isIncome
-                          ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300"
-                          : "bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300"
+                          ? "bg-[#E8D1C5]/60 text-[#452829] border-[#E8D1C5] dark:bg-[#452829] dark:text-[#E8D1C5] dark:border-[#57595B]"
+                          : "bg-[#57595B]/15 text-[#57595B] border-[#57595B]/30 dark:bg-[#57595B]/50 dark:text-[#F3E8DF] dark:border-[#57595B]"
                       }`}
                     >
                       {isIncome ? "Income" : "Expense"}
@@ -107,39 +109,39 @@ export function TransactionTable({
                   </td>
 
                   {/* Date */}
-                  <td className="py-3.5 px-4 text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                  <td className="py-4 px-4 text-[#57595B] dark:text-[#E8D1C5]/80 whitespace-nowrap">
+                    <div className="flex items-center gap-1.5 font-medium">
+                      <Calendar className="w-3.5 h-3.5 text-[#57595B]" />
                       {formatDate(tx.date)}
                     </div>
                   </td>
 
                   {/* Amount */}
                   <td
-                    className={`py-3.5 px-4 text-right font-bold whitespace-nowrap ${
+                    className={`py-4 px-4 text-right font-bold whitespace-nowrap ${
                       isIncome
-                        ? "text-emerald-600 dark:text-emerald-400"
-                        : "text-rose-600 dark:text-rose-400"
+                        ? "text-[#452829] dark:text-[#E8D1C5]"
+                        : "text-[#9c3c3a] dark:text-[#c46461]"
                     }`}
                   >
                     {isIncome ? "+" : "-"}
                     {formatCurrency(tx.amount)}
                   </td>
 
-                  {/* US-08 & US-09: Edit and Delete Actions */}
-                  <td className="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                  {/* Actions */}
+                  <td className="py-4 px-4 sm:px-6 text-right whitespace-nowrap">
                     <div className="flex items-center justify-end gap-1.5">
                       <button
                         onClick={() => onEdit(tx)}
                         title="Edit transaction"
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition-colors"
+                        className="p-1.5 rounded-lg text-[#57595B] hover:text-[#452829] dark:text-[#E8D1C5]/70 dark:hover:text-[#F3E8DF] hover:bg-[#E8D1C5]/40 dark:hover:bg-[#452829]/60 transition-colors"
                       >
                         <Edit3 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => onDelete(tx)}
                         title="Delete transaction"
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/50 transition-colors"
+                        className="p-1.5 rounded-lg text-[#57595B] hover:text-[#9c3c3a] dark:text-[#E8D1C5]/70 dark:hover:text-[#c46461] hover:bg-[#9c3c3a]/10 dark:hover:bg-[#9c3c3a]/20 transition-colors"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>

@@ -46,11 +46,20 @@ export const EXPENSE_CATEGORIES = [
 ] as const;
 
 export function getCategoryBadgeClass(category: string): string {
-  if (category.includes("Food")) return "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20";
-  if (category.includes("Tuition") || category.includes("Scholarship")) return "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20";
-  if (category.includes("Housing")) return "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20";
-  if (category.includes("Transportation")) return "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20";
-  if (category.includes("Entertainment")) return "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20";
-  if (category.includes("Allowance") || category.includes("Job")) return "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20";
-  return "bg-slate-500/10 text-slate-600 dark:text-slate-400 border-slate-500/20";
+  if (category.includes("Food") || category.includes("Coffee")) {
+    return "bg-[#E8D1C5]/40 text-[#452829] dark:bg-[#57595B]/50 dark:text-[#F3E8DF] border-[#E8D1C5] dark:border-[#57595B]";
+  }
+  if (category.includes("Tuition") || category.includes("Scholarship")) {
+    return "bg-[#452829]/10 text-[#452829] dark:bg-[#E8D1C5]/20 dark:text-[#E8D1C5] border-[#452829]/20 dark:border-[#E8D1C5]/30";
+  }
+  if (category.includes("Housing") || category.includes("Rent")) {
+    return "bg-[#57595B]/15 text-[#452829] dark:bg-[#57595B]/60 dark:text-[#F3E8DF] border-[#57595B]/30 dark:border-[#57595B]";
+  }
+  if (category.includes("Allowance") || category.includes("Job") || category.includes("Freelance")) {
+    return "bg-[#E8D1C5]/60 text-[#452829] dark:bg-[#452829] dark:text-[#E8D1C5] border-[#E8D1C5] dark:border-[#57595B]";
+  }
+  if (category.includes("Transportation") || category.includes("Internet")) {
+    return "bg-[#F3E8DF] text-[#57595B] dark:bg-[#3b2324] dark:text-[#E8D1C5] border-[#E8D1C5] dark:border-[#57595B]";
+  }
+  return "bg-[#E8D1C5]/20 text-[#57595B] dark:bg-[#57595B]/30 dark:text-[#F3E8DF] border-[#E8D1C5]/60 dark:border-[#57595B]/60";
 }

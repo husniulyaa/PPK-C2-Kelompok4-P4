@@ -40,8 +40,6 @@ export function EditTransactionModal({
 
   if (!isOpen || !transaction) return null;
 
-  const currentCategories = type === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
-
   const handleTypeChange = (newType: TransactionType) => {
     setType(newType);
     const targetCategories = newType === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
@@ -93,22 +91,24 @@ export function EditTransactionModal({
     }
   };
 
+  const currentCategories = type === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-md rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#2b191a]/70 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-md rounded-2xl bg-[#F3E8DF] dark:bg-[#3b2324] border border-[#E8D1C5] dark:border-[#57595B] shadow-2xl overflow-hidden transition-colors">
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between p-5 border-b border-[#E8D1C5] dark:border-[#57595B]/60">
           <div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">
+            <h3 className="text-base font-bold text-[#452829] dark:text-[#F3E8DF]">
               Edit Transaction (US-08)
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-[#57595B] dark:text-[#E8D1C5]/70">
               Update existing transaction details
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+            className="p-1.5 rounded-xl text-[#57595B] hover:text-[#452829] dark:text-[#E8D1C5]/70 dark:hover:text-[#F3E8DF] hover:bg-[#E8D1C5]/40 dark:hover:bg-[#452829]"
           >
             <X className="w-5 h-5" />
           </button>
@@ -116,14 +116,14 @@ export function EditTransactionModal({
 
         {/* Type toggle */}
         <div className="p-5 pb-0">
-          <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl">
+          <div className="grid grid-cols-2 gap-2 p-1 bg-[#E8D1C5]/50 dark:bg-[#2b191a] border border-[#E8D1C5] dark:border-[#57595B]/50 rounded-xl">
             <button
               type="button"
               onClick={() => handleTypeChange("income")}
-              className={`flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold transition-all ${
+              className={`flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-bold transition-all ${
                 type === "income"
-                  ? "bg-emerald-500 text-white shadow-sm"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  ? "bg-[#452829] text-[#F3E8DF] dark:bg-[#E8D1C5] dark:text-[#452829] shadow-sm"
+                  : "text-[#57595B] dark:text-[#E8D1C5]/70 hover:text-[#452829] dark:hover:text-[#F3E8DF]"
               }`}
             >
               <ArrowUpRight className="w-4 h-4" />
@@ -132,10 +132,10 @@ export function EditTransactionModal({
             <button
               type="button"
               onClick={() => handleTypeChange("expense")}
-              className={`flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold transition-all ${
+              className={`flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-bold transition-all ${
                 type === "expense"
-                  ? "bg-rose-500 text-white shadow-sm"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  ? "bg-[#452829] text-[#F3E8DF] dark:bg-[#E8D1C5] dark:text-[#452829] shadow-sm"
+                  : "text-[#57595B] dark:text-[#E8D1C5]/70 hover:text-[#452829] dark:hover:text-[#F3E8DF]"
               }`}
             >
               <ArrowDownLeft className="w-4 h-4" />
@@ -147,35 +147,35 @@ export function EditTransactionModal({
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="p-5 space-y-4">
           {error && (
-            <div className="p-3 text-xs rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-600 dark:text-rose-400">
+            <div className="p-3 text-xs rounded-xl bg-[#9c3c3a]/15 border border-[#9c3c3a]/30 text-[#9c3c3a] dark:text-[#c46461]">
               {error}
             </div>
           )}
 
           {/* Title */}
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+            <label className="block text-xs font-bold text-[#452829] dark:text-[#F3E8DF] mb-1.5">
               Title
             </label>
             <div className="relative">
-              <FileText className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <FileText className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#57595B]" />
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
-                className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-900 dark:text-white"
+                className="w-full pl-10 pr-3.5 py-2 text-xs bg-white dark:bg-[#2b191a] border border-[#E8D1C5] dark:border-[#57595B] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#452829] dark:focus:ring-[#E8D1C5] text-[#452829] dark:text-[#F3E8DF]"
               />
             </div>
           </div>
 
           {/* Amount */}
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+            <label className="block text-xs font-bold text-[#452829] dark:text-[#F3E8DF] mb-1.5">
               Amount (IDR)
             </label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-[#57595B]">
                 Rp
               </span>
               <input
@@ -185,23 +185,23 @@ export function EditTransactionModal({
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 required
-                className="w-full pl-10 pr-3 py-2 text-xs bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-900 dark:text-white"
+                className="w-full pl-10 pr-3.5 py-2 text-xs bg-white dark:bg-[#2b191a] border border-[#E8D1C5] dark:border-[#57595B] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#452829] dark:focus:ring-[#E8D1C5] text-[#452829] dark:text-[#F3E8DF]"
               />
             </div>
           </div>
 
           {/* Category */}
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+            <label className="block text-xs font-bold text-[#452829] dark:text-[#F3E8DF] mb-1.5">
               Category
             </label>
             <div className="relative">
-              <Tag className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+              <Tag className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#57595B] pointer-events-none" />
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 aria-label="Edit transaction category"
-                className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-900 dark:text-white cursor-pointer"
+                className="w-full pl-10 pr-3.5 py-2 text-xs bg-white dark:bg-[#2b191a] border border-[#E8D1C5] dark:border-[#57595B] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#452829] dark:focus:ring-[#E8D1C5] text-[#452829] dark:text-[#F3E8DF] cursor-pointer font-medium"
               >
                 {currentCategories.map((c) => (
                   <option key={c} value={c}>
@@ -214,17 +214,17 @@ export function EditTransactionModal({
 
           {/* Date */}
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+            <label className="block text-xs font-bold text-[#452829] dark:text-[#F3E8DF] mb-1.5">
               Date
             </label>
             <div className="relative">
-              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#57595B]" />
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 required
-                className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-900 dark:text-white"
+                className="w-full pl-10 pr-3.5 py-2 text-xs bg-white dark:bg-[#2b191a] border border-[#E8D1C5] dark:border-[#57595B] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#452829] dark:focus:ring-[#E8D1C5] text-[#452829] dark:text-[#F3E8DF]"
               />
             </div>
           </div>
@@ -234,14 +234,14 @@ export function EditTransactionModal({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl"
+              className="px-4 py-2 text-xs font-bold text-[#57595B] dark:text-[#E8D1C5] hover:bg-[#E8D1C5]/30 dark:hover:bg-[#452829] rounded-xl"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="px-4 py-2 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-sm transition-all"
+              className="px-4 py-2 text-xs font-bold text-[#F3E8DF] dark:text-[#452829] bg-[#452829] hover:bg-[#5c3638] dark:bg-[#E8D1C5] dark:hover:bg-[#dfc1b3] rounded-xl shadow-sm transition-all"
             >
               {loading ? "Saving..." : "Save Changes"}
             </button>
