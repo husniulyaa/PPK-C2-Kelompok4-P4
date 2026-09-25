@@ -65,7 +65,7 @@ export default function RegisterPage() {
             <GraduationCap className="w-5 h-5" />
           </div>
           <span className="font-bold text-base text-[#452829] dark:text-[#F3E8DF]">
-            Expense Tracker
+            MoneyLover
           </span>
         </Link>
         <ThemeToggle />
